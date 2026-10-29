@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fight Gear</title>
+
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+</head>
+
+<body class=" flex flex-col bg-fundo-principal light:bg-fundo-principal-light duration-1500 min-h-screen">
+    <header class="flex flex-col md:flex-row items-center justify-between py-4 px-6 md:px-12 gap-4 ">
+        <h2
+            class="text-texto-principal light:text-texto-principal-light font-bold light:font-extrabold font-montserrat text-xl md:text-2xl">
+            FIGHT <b class="text-dourado-principal light:text-dourado-escuro">GEAR</b></h2>
+        <nav class="flex justify-center text-sm sm:text-base gap-3 md:text-lg md:gap-9">
+            <a href=""
+                class="text-texto-secundario light:text-gray-800 font-inter font-medium light:font-bold hover:underline underline-offset-6 decoration-dourado-escuro">Inicio</a>
+            <a href=""
+                class="text-texto-secundario light:text-gray-800 font-inter font-medium light:font-bold hover:underline underline-offset-6 decoration-dourado-escuro">Produtos</a>
+            <a href=""
+                class="text-texto-secundario light:text-gray-800 font-inter font-medium light:font-bold hover:underline underline-offset-6 decoration-dourado-escuro">Categorias</a>
+            <a href=""
+                class="text-texto-secundario light:text-gray-800  font-inter font-medium light:font-bold hover:underline underline-offset-6 decoration-dourado-escuro">Sobre
+                Nós</a>
+            <a href=""
+                class="text-texto-secundario light:text-gray-800 font-inter font-medium light:font-bold hover:underline underline-offset-6 decoration-dourado-escuro">Contato</a>
+        </nav>
+        <button id="btn-theme"
+            class=" font-bold font-montserrat  text-sm md:text-lg border border-2 border-dourado-principal light:border-dourado-escuro p-5 rounded-full duration-300"></button>
+    </header>
+
+    <main>
+        <div class="w-full py-16 md:py-24 bg-cover bg-center bg-custom-banner"style="background-image:linear-gradient(to right, rgba(0,0,0,.9),rgba(0,0,0,0)),linear-gradient(to top, rgba(0,0,0,1),rgba(0,0,0,0)), url('{% static 'images/lutador-hero-dark.png' %}');">
+
+            <div id="text-hero"
+                class="flex flex-col justify-start md:justify-center max-w-75 py-2 sm:py5 md:py-15 px-5 md:mx-25">
+
+                <span
+                    class="text-dourado-principal font-inter font-semibold text-sm md:text-base lg:text-2xl lg: uppercase">EQUIPAMENTOS
+                    PARA QUEM</span>
+
+                <h1 class="text-white font-montserrat text-3xl md:text-4xl lg:text-6xl text-balance font-bold mt-2">
+                    LEVANTA TODO DIA</h1>
+
+                <p class="text-texto-secundario font-inter font-medium text-balance mt-2 md:text-xl">Mais do que
+                    equipamentos, é sobre respeito, diciplina e evolução</p>
+
+                <button
+                    class="flex w-40 my-3 font-montserrat font-bold bg-dourado-principal px-3 py-1.5 rounded-lg mt-4 hover:bg-dourado-escuro duration-300">VER
+                    PRODUTOS</button>
+            </div>
+        </div>
+
+        <div class="flex flex-col px-15 md:px-25 py-15">
+
+            <span
+                class="text-dourado-principal light:text-dourado-escuro font-inter font-semibold text-xl md:text-2xl lg:text-3xl lg: uppercase text-balance">PRODUTOS
+                EM DESTAQUE</span>
+
+            <h2
+                class="text-texto-principal light:text-texto-principal-light font-extrabold font-montserrat text-2xl md:text-4xl lg:text-5xl uppercase text-balance">
+                escolhidos para você</h2>
+
+            <section id="cards"
+                class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] mt-9 gap-6 md:gap-8 lg:gap-12">
+
+
+                <!-- CARD -->
+                {% if cards %}
+                {% for produto in cards %}
+                <div
+                    class="flex flex-col justify-between min-h-83 p-3  bg-fundo-secundario light:bg-fundo-secundario-light rounded-lg  border border-borda-sutil light:border-borda-sutil-light shadow-xl shadow-fundo-secundario duration-500 hover:scale-105 ">
+                    <div>
+                        <img src="{{ produto.foto.url }}"
+                            alt="luva-maximum-azul" loading="lazy" class="rounded-lg aspect-square w-full object-cover">
+                        <h3 class="text-texto-principal light:text-texto-principal-light font-medium light:font-bold mt-4 text-xl">
+                            {{ produto.nome }}</h3>
+                    </div>
+
+                    <div>
+                        <h3
+                            class="text-texto-principal light:text-texto-principal-light font-medium light:font-bold mt-3 text-3xl">
+                            R${{ produto.preco }}</h3>
+                        <button
+                            class="flex items-center justify-center w-full my-3 font-montserrat font-bold bg-dourado-principal px-6 py-3 md:px-3 md:py-1.5 rounded-lg mt-8 hover:bg-dourado-escuro duration-300 uppercase">adicionar</button>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+
+
+            </section>
+        </div>
+
+
+
+        <div>
+            <div class="mx-auto my-20 w-full md:w-[80%] md:h-90 py-16 md:py-24 bg-cover bg-center rounded-lg shadow-xl shadow-fundo-secundario"style="background-image:linear-gradient(to right, rgba(0,0,0,.9),rgba(0,0,0,0)),linear-gradient(to top, rgba(0,0,0,1),rgba(0,0,0,0)), url('{% static 'images/footer-banner.png' %}');">
+
+                <h1
+                    class="text-texto-principal w-[70%] sm:w-[40%] ml-10 font-montserrat text-2xl md:text-3xl lg:text-4xl font-bold mt-2 uppercase text-balance">
+                    Equipamento de qualidade é investimento no seu futuro</h1>
+            </div>
+
+
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 items-center mx-auto gap-6 max-w-[85%] px-10 py-6">
+            <div class="flex flex-col">
+                <div class="flex">
+                    <i class="fi fi-rr-envelope text-dourado-principal light:text-dourado-escuro text-3xl mr-2"></i>
+                    <h4
+                        class="uppercase text-texto-principal light:text-texto-principal-light font-montserrat font-bold text-xl">
+                        Receba Nossas novidades
+                    </h4>
+                </div>
+                <p class="text-texto-secundario light:text-gray-800 font-inter text-sm md:text-md lg:text-lg">
+                    Cadastre-se e fique por dentro
+                    de promoções, lançamentos e muito mais</p>
+            </div>
+
+            <div>
+                <form action="" class="flex justify-center md:justify-end">
+                    <input type="email" placeholder="Digite seu e-mail" max="55" min="8"
+                        class="placeholder:text-texto-secundario light:placeholder:text-gray-800 placeholder:px-2 text-texto-principal light:text-gray-800 border border-gray-600 p-2 rounded-l-sm w-54 md:w-48 lg:w-80">
+                    <button type="submit"
+                        class="flex items-center justify-center font-montserrat font-bold bg-dourado-principal px-6 py-3 md:px-3 md:py-1.5 rounded-r-sm hover:bg-dourado-escuro duration-300 uppercase">adicionar</button>
+                </form>
+            </div>
+        </div>
+
+        <footer
+            class="bg-fundo-rodape light:bg-fundo-secundario-light w-full lg:h-55 px-6 md:px-30 py-5 md:py-8  border-t border-gray-700 light:border-borda-sutil-light">
+
+            <div class="grid grid-cols-1 lg:grid-cols-4">
+                <div>
+                    <h2
+                        class="uppercase text-texto-principal light:text-texto-principal-light text-3xl font-bold light:font-extrabold">
+                        Fight <span class="text-dourado-principal light:text-dourado-escuro">GEAR</span></h2>
+                    <p class="text-texto-secundario light:text-gray-800 pt-2 font-medium">Equipamentos para quem não
+                        para.</p>
+                </div>
+
+                <div class="flex gap-10 lg:gap-20 mt-4">
+
+                    <div class="flex flex-col md:my-0">
+                        <span
+                            class="text-texto-principal light:text-gray-800 font-bold light:font-extrabold mb-1">Navegação</span>
+                        <a href="" class="text-texto-secundario light:text-gray-800">Inicio</a>
+                        <a href="" class="text-texto-secundario light:text-gray-800">Produtos</a>
+                        <a href="" class="text-texto-secundario light:text-gray-800">Categorias</a>
+                        <a href="" class="text-texto-secundario light:text-gray-800">Sobre Nós</a>
+                        <a href="" class="text-texto-secundario light:text-gray-800">Contato</a>
+                    </div>
+
+
+                    <div class="flex flex-col">
+                        <span
+                            class="text-texto-principal light:text-gray-800 font-bold light:font-extrabold mb-1">Atendimento</span>
+                        <p class="text-texto-secundario light:text-gray-800">(11) 99999-9999</p>
+                        <p class="text-texto-secundario light:text-gray-800">contato@fightgear.com</p>
+                        <p class="text-texto-secundario light:text-gray-800">Seg a Sex - 9h ás 18h</p>
+                        <a href="" class="text-texto-secundario light:text-gray-800">Sobre Nós</a>
+                        <a href="" class="text-texto-secundario light:text-gray-800">Contato</a>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+
+
+
+
+    </main>
+
+    <script src="{%static 'js/light.js' %}"></script>
+
+</body>
+
+</html>
